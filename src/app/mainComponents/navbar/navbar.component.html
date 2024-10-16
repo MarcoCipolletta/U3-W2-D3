@@ -11,9 +11,9 @@
           >Preferiti
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-            [ngClass]="{ 'd-none': preferiti.length === 0 }"
+            [ngClass]="{ 'd-none': favourites === 0 }"
           >
-            {{ badgePreferiti() }}
+            {{ badgefavourites() }}
           </span>
         </a>
       </li>

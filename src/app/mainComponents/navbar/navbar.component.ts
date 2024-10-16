@@ -9,19 +9,22 @@ import { ProductService } from '../../services/product.service';
 })
 export class NavbarComponent {
   constructor(private productSvc: ProductService) {}
-  preferiti: iProduct[] = [];
+  favourites: number = 0;
 
   ngOnInit() {
-    this.productSvc.preferiti$.subscribe((products) => {
-      this.preferiti = products;
+    this.productSvc.favourites$.subscribe((products) => {
+      this.favourites = products.length;
     });
-    console.log(this.preferiti.length);
+    this.productSvc.getFavouritesCount().subscribe((qnt) => {
+      this.favourites = qnt;
+    });
+    console.log(this.favourites);
   }
-  badgePreferiti() {
-    if (this.preferiti.length > 9) {
+  badgefavourites() {
+    if (this.favourites > 9) {
       return '9+';
     } else {
-      return this.preferiti.length.toString();
+      return this.favourites;
     }
   }
 }
