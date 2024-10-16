@@ -9,6 +9,7 @@ import { PreferitiComponent } from './pages/preferiti/preferiti.component';
 import { NavbarComponent } from './mainComponents/navbar/navbar.component';
 import { CartComponent } from './mainComponents/cart/cart.component';
 import { CardComponent } from './components/card/card.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,10 @@ import { CardComponent } from './components/card/card.component';
     PreferitiComponent,
     NavbarComponent,
     CartComponent,
-    CardComponent
+    CardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  providers: [provideHttpClient()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

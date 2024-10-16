@@ -1,10 +1,25 @@
 import { Component } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { iProduct } from '../../interfaces/i-product';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  constructor(private productSvc: ProductService) {}
 
+  products: iProduct[] = [];
+  cart: iProduct[] = [];
+
+  ngOnInit() {
+    this.productSvc.product$.subscribe((products) => {
+      this.products = products;
+    });
+
+    this.productSvc.cart$.subscribe((products) => {
+      this.cart = products;
+    });
+  }
 }

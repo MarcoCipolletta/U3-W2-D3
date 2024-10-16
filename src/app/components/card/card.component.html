@@ -1,1 +1,21 @@
-<p>card works!</p>
+<div class="card h-100">
+  <img
+    src="{{ product.thumbnail }}"
+    class=""
+    alt="image of {{ product.title }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text text-truncate">
+      {{ product.description }}
+    </p>
+  </div>
+  <div
+    class="card-footer d-flex justify-content-between border-0 bg-transparent"
+  >
+    <button class="btn btn-primary">Add to cart</button>
+    <button class="btn btn-primary" (click)="addFav(product)">
+      <i class="fa-regular fa-heart"></i>
+    </button>
+  </div>
+</div>
